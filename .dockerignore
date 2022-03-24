@@ -1,0 +1,5 @@
+extern/Criterion/build/
+build/*
+cmake-build-debug/
+.idea/
+Dockerfile

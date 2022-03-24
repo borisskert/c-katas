@@ -40,3 +40,9 @@ cmake --build .
 cd build # (from project root)
 ./test/c_katas_test
 ```
+
+## Run tests in docker environment
+
+```bash
+docker-compose up --build
+```
