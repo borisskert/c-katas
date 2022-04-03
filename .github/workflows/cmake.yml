@@ -1,0 +1,45 @@
+---
+name: Prepare, build and run tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install needed packages
+        run: |
+          sudo apt update
+          sudo apt install -y git \
+                              build-essential \
+                              cmake \
+                              clang \
+                              meson \
+                              pkg-config
+
+      - name: Compile and install Criterion
+        run: |
+          git submodule update --init --recursive
+          cd extern/Criterion
+          meson build
+          ninja -C build
+          sudo ninja -C build install
+
+      - name: Build
+        run: |
+          cd build
+          cmake ..
+          cmake --build .
+
+      - name: Run tests
+        run: |
+          cd build/test
+          ./c_katas_test
