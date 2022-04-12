@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(c_katas C)
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
 
 list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 option (ENABLE_TESTS "Build tests along with the library" ON)
