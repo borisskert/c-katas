@@ -58,7 +58,6 @@ static void reverseWord(char *word) {
  * @param count the strings count
  * @param delimiter the used delimiter
  * @param target the target array the strings will be joined into
- * @return a strings joined to a single string
  */
 void join(const char **strings, const size_t count, const char *delimiter, char *target) {
     size_t delimiterLength = strlen(delimiter);
@@ -87,7 +86,6 @@ void join(const char **strings, const size_t count, const char *delimiter, char 
  * @param words the words as string-array
  * @param count the count of words
  * @param target the target string the sentence will be written into
- * @return the sentence as string
  */
 void unwords(const char **words, const size_t count, char *target) {
     join(words, count, " ", target);
