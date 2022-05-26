@@ -3,10 +3,10 @@
  */
 
 #include <string.h>
-#include <malloc.h>
 #include <tgmath.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 #define PREFIX_LENGTH 2
 #define ALPHABET_SIZE 26
