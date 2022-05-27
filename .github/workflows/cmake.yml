@@ -8,7 +8,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-linux:
     runs-on: ubuntu-20.04
 
     steps:
@@ -36,6 +36,38 @@ jobs:
       - name: Build
         run: |
           cd build
+          cmake ..
+          cmake --build .
+
+      - name: Run tests
+        run: |
+          cd build/test
+          ./c_katas_test
+
+  build-macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install needed software
+        run: |
+          brew update && \
+          brew install meson
+
+      - name: Compile and install Criterion
+        run: |
+          git submodule update --init --recursive
+          cd extern/Criterion
+          meson build
+          ninja -C build
+          sudo ninja -C build install
+
+      - name: Build
+        run: |
+          cd build
+          export C_INCLUDE_PATH=/usr/local/include
           cmake ..
           cmake --build .
 

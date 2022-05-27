@@ -25,7 +25,7 @@ void dotest(char **arr, int sz, char *expr) {
 
 char *joinStringsStringArray(char *strings[], int count) {
     char *result = malloc(sizeof(char*) * count * 2);
-    strcat(result, "{");
+    strcpy(result, "{");
 
     int i;
     for (i = 0; i < count; ++i) {
