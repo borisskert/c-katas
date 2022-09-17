@@ -1,5 +1,7 @@
 file(GLOB_RECURSE SOURCES *.c)
 
+include_directories(${CRITERION_INCLUDE_DIR})
+
 add_executable(c_katas_test ${SOURCES})
 
 target_link_libraries (c_katas_test PRIVATE c_katas_lib "${CRITERION_LIBRARIES}")
