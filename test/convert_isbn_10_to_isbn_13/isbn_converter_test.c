@@ -4,7 +4,7 @@
 char *ISBN_converter(char *ISBN_13, const char *ISBN_10);
 
 static void do_test(const char *ISBN_10, const char *ISBN_13) {
-    char actual_ISBN_13[17];
+    char actual_ISBN_13[18];
     cr_assert(eq(str, ISBN_converter(actual_ISBN_13, ISBN_10), (char *) ISBN_13));
 }
 
