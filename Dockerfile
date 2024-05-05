@@ -1,4 +1,4 @@
-ARG RELEASE=latest
+ARG RELEASE=20.04
 
 FROM ubuntu:${RELEASE} as c-dev-environment
 
