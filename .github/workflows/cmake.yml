@@ -9,11 +9,11 @@ on:
 
 jobs:
   build-linux-x86-64:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install needed packages
         run: |
@@ -24,14 +24,6 @@ jobs:
                               clang \
                               meson \
                               pkg-config
-
-      - name: Compile and install Criterion
-        run: |
-          git submodule update --init --recursive
-          cd extern/Criterion
-          meson build
-          ninja -C build
-          sudo ninja -C build install
 
       - name: Build
         run: |
@@ -46,11 +38,11 @@ jobs:
 
 
   build-linux-arm64:
-    runs-on: [self-hosted, linux, ARM64]
+    runs-on: [ self-hosted, linux, ARM64 ]
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install needed packages
         run: |
@@ -61,14 +53,6 @@ jobs:
                               clang \
                               meson \
                               pkg-config
-
-      - name: Compile and install Criterion
-        run: |
-          git submodule update --init --recursive
-          cd extern/Criterion
-          meson build
-          ninja -C build
-          sudo ninja -C build install
 
       - name: Build
         run: |
@@ -87,20 +71,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install needed software
         run: |
           brew update && \
           brew install meson
-
-      - name: Compile and install Criterion
-        run: |
-          git submodule update --init --recursive
-          cd extern/Criterion
-          meson build
-          ninja -C build
-          sudo ninja -C build install
 
       - name: Build
         run: |

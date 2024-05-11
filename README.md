@@ -15,17 +15,6 @@ You need to install following tools/packages:
 * clang
 * meson/ninja
 
-### Compile and install [Criterion](https://github.com/Snaipe/Criterion)
-
-```bash
-git submodule update --init --recursive
-
-cd extern/Criterion # (from project root)
-meson build
-ninja -C build
-ninja -C build install # (sudo permissions are required)
-```
-
 ## Build
 
 ```bash
@@ -44,5 +33,5 @@ cd build # (from project root)
 ## Run tests in docker environment
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
