@@ -33,5 +33,5 @@ cd build # (from project root)
 ## Run tests in docker environment
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```

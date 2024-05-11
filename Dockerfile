@@ -1,4 +1,4 @@
-ARG RELEASE=20.04
+ARG RELEASE=24.04
 
 FROM ubuntu:${RELEASE} as c-dev-environment
 
@@ -26,12 +26,6 @@ COPY . /usr/local/src
 
 WORKDIR /usr/local/src
 
-RUN git submodule update --init --recursive && \
-    cd extern/Criterion && \
-    meson build && \
-    ninja -C build && \
-    ninja -C build install
-
 RUN cd build && \
     cmake .. && \
     cmake --build .
@@ -41,7 +35,9 @@ FROM ubuntu:${RELEASE}
 
 WORKDIR /opt
 
-COPY --from=build /usr/local/lib/x86_64-linux-gnu/libcriterion.* /usr/local/lib/x86_64-linux-gnu/
+ENV LD_LIBRARY_PATH /usr/local/lib
+
+COPY --from=build /usr/local/src/build/Criterion/* /usr/local/lib/
 COPY --from=build /usr/local/src/build/test/c_katas_test .
 
 CMD ["./c_katas_test"]
