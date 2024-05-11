@@ -2,7 +2,7 @@ include(ExternalProject)
 ExternalProject_Add(
         Criterion
         GIT_REPOSITORY https://github.com/Snaipe/Criterion.git
-        GIT_TAG v2.4.2
+        GIT_TAG v2.4.1
         SOURCE_DIR ${CMAKE_BINARY_DIR}/Criterion-src
         BUILD_IN_SOURCE TRUE
         CONFIGURE_COMMAND ""
