@@ -21,7 +21,7 @@ static char **chunksOf(const char *string, int *lg);
 /**
  * @param lg the number of fragments that this function will return
  */
-char **encode(char *string, int shift, int *lg) {
+char **caesars_encode(char *string, int shift, int *lg) {
     char *ciphertext = prepareCiphertext(string);
 
     caesars(ciphertext + 1, shift);
@@ -39,7 +39,7 @@ static int extractShift(const char *joined);
 /**
  * @param size the given number of fragments to decode
  */
-char *decode(char **strings, int size) {
+char *caesars_decode(char **strings, int size) {
     char *joined = join((const char **) strings, size, "");
     int shift = extractShift(joined);
 

@@ -6,13 +6,13 @@
 
 static char *joinStringsStringArray(char *strings[], int count);
 
-char **encode(char *string, int shift, int *lg);
+char **caesars_encode(char *string, int shift, int *lg);
 
-char *decode(char **strings, int size);
+char *caesars_decode(char **strings, int size);
 
 void dotest1(char *u, int shift, char *expr) {
     int lg = 0;
-    char **act = encode(u, shift, &lg);
+    char **act = caesars_encode(u, shift, &lg);
     char *sact = joinStringsStringArray(act, lg);
     if (strcmp(sact, expr) != 0)
         printf("Error. Expected \n%s\n but got \n%s\n", expr, sact);
@@ -24,7 +24,7 @@ void dotest1(char *u, int shift, char *expr) {
 }
 
 void dotest2(char *u[], int sz, char *expr) {
-    char *sact = decode(u, sz);
+    char *sact = caesars_decode(u, sz);
     char *su = joinStringsStringArray(u, sz);
     if (strcmp(sact, expr) != 0)
         printf("Error. Expected \n%s\n but got \n%s\n", expr, sact);
